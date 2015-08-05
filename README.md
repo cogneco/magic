@@ -10,7 +10,7 @@ Very, very early alpha stage.
 This will enable more complex checks. Right now, a limited set of checks has been hacked together using the
 token list generated from each file.
 * Command line arguments are not implemented (except for -f).
-* A tab width of 4 is assumed.
+* A tab width of 4 is assumed when calculating the column index in style violation warnings
 
 #requirements
 Known to work on Linux (x64), status on other platforms is unknown at this time.

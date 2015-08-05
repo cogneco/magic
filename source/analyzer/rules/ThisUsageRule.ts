@@ -10,12 +10,13 @@ class ThisUsageRule implements Rule {
 	run(tokens: Array<Token>, report: Report) {
 		var className: string;
 		var isClass = false;
+		var last: Token;
 		for (var i = 0; i < tokens.length; i++) {
 			if (tokens[i].kind == TokenKind.Identifier) {
 				className = tokens[i].value;
 				while (tokens[i].kind != TokenKind.WhitespaceLineFeed && tokens[i].kind != TokenKind.Eof) {
 					if (tokens[i].kind == TokenKind.KeywordClass || tokens[i].kind == TokenKind.KeywordCover) {
-						while (tokens[i].kind != TokenKind.SeparatorLeftCurly) {
+						while (tokens[i].kind != TokenKind.SeparatorLeftCurly && tokens[i].kind != TokenKind.KeywordFrom) {
 							i++;
 						}
 						isClass = true;
@@ -28,6 +29,7 @@ class ThisUsageRule implements Rule {
 					isClass = false;
 				}
 			}
+			last = tokens[i];
 		}
 	}
 
