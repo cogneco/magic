@@ -1,16 +1,16 @@
 module Magic.Utilities {
 	export class String {
-		static padLeft(value: string, padingCharacter: string, width: number) {
-			return String.pad(value, padingCharacter, width, true);
+		static padLeft(value: string, paddingCharacter: string, width: number) {
+			return String.pad(value, paddingCharacter, width, true);
 		}
-		static padRight(value: string, padingCharacter: string, width: number) {
-			return String.pad(value, padingCharacter, width, false);
+		static padRight(value: string, paddingCharacter: string, width: number) {
+			return String.pad(value, paddingCharacter, width, false);
 		}
-		private static pad(value: string, padingCharacter: string, width: number, padLeft = false) {
+		private static pad(value: string, paddingCharacter: string, width: number, padLeft = false) {
 			var padding = "";
 			var n = width - value.length;
 			for (var i = 0; i < n; i++) {
-				padding += padingCharacter;
+				padding += paddingCharacter;
 			}
 			return padLeft ? padding + value : value + padding;
 		}
