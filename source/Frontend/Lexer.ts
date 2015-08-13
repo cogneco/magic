@@ -326,7 +326,7 @@ module Magic.Frontend {
 
 		private isHexadecimalDigit(c: string) {
 			var cc = c.charCodeAt(0);
-			return (cc > 47 && cc < 58) || (cc > 64 && cc < 71) || (cc > 97 && cc < 103);
+			return (cc > 47 && cc < 58) || (cc > 64 && cc < 71) || (cc > 96 && cc < 103);
 		}
 
 		private isBinaryDigit(c: string) {
