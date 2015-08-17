@@ -1,10 +1,16 @@
 **Table of Contents**
-
+- [0.1.8-alpha](#018-alpha)
+- [0.1.7-alpha](#017-alpha)
 - [0.1.6-alpha](#016-alpha)
 - [0.1.5-alpha](#015-alpha)
 - [0.1.4-alpha](#014-alpha)
 - [0.1.3-alpha](#013-alpha)
 - [0.1.2-alpha](#012-alpha)
+
+# 0.1.8-alpha
+* Improved SeparatorSpacing to check for space after ```{``` and after ```)``` if the parenthesis is followed by a ```}```
+* Fixed OperatorSpacing so it reports if a tab was found instead of a space
+* Fixed KeywordSpacing to handle cases like ```VectorList<This>``` without compaining about missing space.
 
 # 0.1.7-alpha
 * Same as 0.1.6-alpha
