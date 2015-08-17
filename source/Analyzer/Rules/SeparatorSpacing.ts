@@ -8,13 +8,20 @@ module Magic.Analyzer.Rules {
 					case Frontend.TokenKind.SeparatorColon:
 					case Frontend.TokenKind.SeparatorLeftCurly:
 					case Frontend.TokenKind.SeparatorComma:
-						if (t.kind != Frontend.TokenKind.WhitespaceSpace && t.kind != Frontend.TokenKind.WhitespaceLineFeed) {
-							this.addViolation(report, t, previous);
-						}
-						break;
 					case Frontend.TokenKind.SeparatorRightParanthesis:
-						if (t.kind == Frontend.TokenKind.SeparatorRightCurly) {
-							this.addViolation(report, t, previous);
+						if (t.kind == Frontend.TokenKind.WhitespaceTab) {
+							this.addViolation("found a TAB instead of a SPACE after separator", report, t, previous);
+						} else {
+							var message = "missing space after separator";
+							if (previous.kind == Frontend.TokenKind.SeparatorRightParanthesis) {
+								if (t.kind == Frontend.TokenKind.SeparatorRightCurly) {
+									this.addViolation(message, report, t, previous);
+								}
+							} else {
+								if (t.kind != Frontend.TokenKind.WhitespaceSpace && t.kind != Frontend.TokenKind.WhitespaceLineFeed) {
+									this.addViolation(message, report, t, previous);
+								}
+							}
 						}
 						break;
 				}
@@ -22,9 +29,9 @@ module Magic.Analyzer.Rules {
 			});
 		}
 
-		private addViolation(report: Report, token: Frontend.Token, previousToken: Frontend.Token) {
+		private addViolation(message: string, report: Report, token: Frontend.Token, previousToken: Frontend.Token) {
 			report.addViolation(new Violation(token.location,
-				"missing space after separator '" + previousToken.value + "'", RuleKind.Separator));
+				message + " '" + previousToken.value + "'", RuleKind.Separator));
 		}
 
 	}
