@@ -4,7 +4,7 @@ module Magic.Analyzer.Rules {
 		run(tokens: Frontend.Token[], report: Report) {
 			for (var i = 0; i < tokens.length; i++) {
 				if (tokens[i].kind == Frontend.TokenKind.KeywordFunc) {
-					while (tokens[i].kind != Frontend.TokenKind.Eof && tokens[i].kind != Frontend.TokenKind.WhitespaceLineFeed) {
+					while (tokens[i].kind != Frontend.TokenKind.Eof && tokens[i].kind != Frontend.TokenKind.WhitespaceLineFeed && tokens[i].kind != Frontend.TokenKind.SeparatorLeftCurly) {
 						if (tokens[i].kind == Frontend.TokenKind.SeparatorLeftParanthesis) {
 							i++;
 							var nextIsType = false;
