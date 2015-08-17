@@ -31,20 +31,32 @@ module Magic.Analyzer.Rules {
 						default:
 							var left = previous;
 							var right = tokens[i + 1];
-							var message = "missing space ";
-
-							var missingLeft = left != null && left.kind != Frontend.TokenKind.WhitespaceSpace && right.kind != Frontend.TokenKind.WhitespaceLineFeed;
-							var missingRight = right.kind != Frontend.TokenKind.WhitespaceSpace && right.kind != Frontend.TokenKind.WhitespaceLineFeed;
-
-							if (missingLeft && missingRight) {
-								message += "before and after";
-							} else if (missingLeft) {
-								message += "before"
-							} else {
-								message += "after";
-							}
+							var leftKind = previous.kind;
+							var rightKind = tokens[i + 1].kind;
+							var missingLeft = left != null && leftKind != Frontend.TokenKind.WhitespaceSpace && rightKind != Frontend.TokenKind.WhitespaceLineFeed;
+							var missingRight = rightKind != Frontend.TokenKind.WhitespaceSpace && rightKind != Frontend.TokenKind.WhitespaceLineFeed;
 
 							if (missingLeft || missingRight) {
+								var message: string;
+								if (leftKind == Frontend.TokenKind.WhitespaceTab || rightKind == Frontend.TokenKind.WhitespaceTab) {
+									message = "found a TAB instead of a SPACE "
+									if (leftKind == Frontend.TokenKind.WhitespaceTab && rightKind == Frontend.TokenKind.WhitespaceTab) {
+										message += "before and after"
+									} else if (missingLeft) {
+										message += "before"
+									} else {
+										message += "after";
+									}
+								} else {
+									message = "missing space ";
+									if (missingLeft && missingRight) {
+										message += "before and after";
+									} else if (missingLeft) {
+										message += "before"
+									} else {
+										message += "after";
+									}
+								}
 								report.addViolation(new Violation(t.location, message + " operator '" + t.value + "'", RuleKind.Operator));
 							}
 							break;
