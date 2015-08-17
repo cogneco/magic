@@ -8,9 +8,13 @@
 - [0.1.2-alpha](#012-alpha)
 
 # 0.1.8-alpha
+
+* Improved SeparatorSpacing to act on tabs where a space was expected
+* Fixed a bug in KeywordSpacing where ```func (class: foobar)``` would trigger a violation
+* Fixed a bug in RedundantTypeInfo where it would react on function calls in addition to function signatures
 * Improved SeparatorSpacing to check for space after ```{``` and after ```)``` if the parenthesis is followed by a ```}```
 * Fixed OperatorSpacing so it reports if a tab was found instead of a space
-* Fixed KeywordSpacing to handle cases like ```VectorList<This>``` without compaining about missing space.
+* Fixed KeywordSpacing to handle cases like ```VectorList<This>``` without compaining about missing space
 
 # 0.1.7-alpha
 * Same as 0.1.6-alpha

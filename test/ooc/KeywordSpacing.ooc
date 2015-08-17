@@ -4,7 +4,8 @@ Foobar: class {
 	// in? should not trigger a missing-space violation here
 	in?: func
 	// VectorList<This> should not cause a violation
-	someFunc: func (moo: Int) -> Foobar<This> {
+	someFunc: func (moo: Int) -> Moobar<This> {
 		moo = foo
 	}
+	func (class: UInt)
 }
