@@ -36,6 +36,7 @@ module Magic.Analyzer.Rules {
 							case Frontend.TokenKind.WhitespaceTab:
 							case Frontend.TokenKind.WhitespaceLineFeed:
 							case Frontend.TokenKind.OperatorLessThan: // Allow This<T> etc.
+							case Frontend.TokenKind.OperatorGreaterThan: // Allow This<T> etc.
 							case Frontend.TokenKind.OperatorConditional: // Allow in? etc.
 								break;
 							default:
