@@ -6,15 +6,26 @@ module Magic.Analyzer.Rules {
 			tokens.forEach(t => {
 				switch (previous.kind) {
 					case Frontend.TokenKind.SeparatorColon:
+					case Frontend.TokenKind.SeparatorLeftCurly:
 					case Frontend.TokenKind.SeparatorComma:
 						if (t.kind != Frontend.TokenKind.WhitespaceSpace && t.kind != Frontend.TokenKind.WhitespaceLineFeed) {
-							report.addViolation(new Violation(t.location,
-								"missing space after separator '" + previous.value + "'", RuleKind.Separator));
+							this.addViolation(report, t, previous);
+						}
+						break;
+					case Frontend.TokenKind.SeparatorRightParanthesis:
+						if (t.kind == Frontend.TokenKind.SeparatorRightCurly) {
+							this.addViolation(report, t, previous);
 						}
 						break;
 				}
 				previous = t;
 			});
 		}
+
+		private addViolation(report: Report, token: Frontend.Token, previousToken: Frontend.Token) {
+			report.addViolation(new Violation(token.location,
+				"missing space after separator '" + previousToken.value + "'", RuleKind.Separator));
+		}
+
 	}
 }
