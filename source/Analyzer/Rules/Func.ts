@@ -1,3 +1,8 @@
+/// <reference path="../../Frontend/Token" />
+/// <reference path="../../Frontend/TokenKind" />
+/// <reference path="../Report" />
+/// <reference path="Rule" />
+
 module Magic.Analyzer.Rules {
 	export class Func implements Rule {
 		constructor() { }
