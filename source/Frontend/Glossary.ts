@@ -96,7 +96,8 @@ module Magic.Frontend {
 			this.operators.setValue("?", TokenKind.OperatorConditional);
 			this.operators.setValue("..", TokenKind.OperatorRange);
 			this.operators.setValue("->", TokenKind.OperatorReturnType);
-			this.operators.setValue("=>", TokenKind.OperatorDoubleArrow)
+			this.operators.setValue("=>", TokenKind.OperatorDoubleArrow);
+			this.operators.setValue("++", TokenKind.OperatorPreIncrement)
 		}
 		private initializeKeywords() {
 			this.keywords.setValue("__onheap__", TokenKind.KeywordOnHeap);
