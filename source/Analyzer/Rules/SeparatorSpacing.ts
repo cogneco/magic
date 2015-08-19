@@ -6,8 +6,8 @@ module Magic.Analyzer.Rules {
 			tokens.forEach(t => {
 				switch (previous.kind) {
 					case Frontend.TokenKind.SeparatorColon:
-					case Frontend.TokenKind.SeparatorLeftCurly:
 					case Frontend.TokenKind.SeparatorComma:
+					case Frontend.TokenKind.SeparatorLeftCurly:
 					case Frontend.TokenKind.SeparatorRightParanthesis:
 						if (t.kind == Frontend.TokenKind.WhitespaceTab) {
 							this.addViolation("found a TAB instead of a SPACE after separator", report, t, previous);
@@ -22,6 +22,16 @@ module Magic.Analyzer.Rules {
 									this.addViolation(message, report, t, previous);
 								}
 							}
+						}
+						break;
+					default:
+						switch (t.kind) {
+							case Frontend.TokenKind.SeparatorRightCurly:
+								var kindString = Frontend.TokenKind[previous.kind];
+								if (previous.kind == Frontend.TokenKind.Identifier || kindString.indexOf("Literal") > -1 || kindString.indexOf("Keyword") > -1) {
+									this.addViolation("missing space before separator", report, t, t);
+								}
+								break;
 						}
 						break;
 				}
