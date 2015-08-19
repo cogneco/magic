@@ -1,4 +1,5 @@
 **Table of Contents**
+- [0.1.9-alpha](#019-alpha)
 - [0.1.8-alpha](#018-alpha)
 - [0.1.7-alpha](#017-alpha)
 - [0.1.6-alpha](#016-alpha)
