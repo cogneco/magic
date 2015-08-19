@@ -112,6 +112,7 @@ module Magic.Frontend {
 		OperatorRange,					/*	..	*/
 		OperatorReturnType,				/*	->	*/
 		OperatorDoubleArrow,			/*	=>	*/
+		OperatorPreIncrement,			/*	++	*/
 		// Literals
 		LiteralNumber,
 		LiteralFloat,

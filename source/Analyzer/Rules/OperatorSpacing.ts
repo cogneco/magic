@@ -27,6 +27,7 @@ module Magic.Analyzer.Rules {
 						case Frontend.TokenKind.OperatorBitwiseOr:
 						case Frontend.TokenKind.OperatorLogicalOr:
 						case Frontend.TokenKind.OperatorRightShift:
+						case Frontend.TokenKind.OperatorPreIncrement:
 							break;
 						default:
 							var left = previous;
