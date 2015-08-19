@@ -16,6 +16,7 @@ module Magic {
 
 		analyze() {
 			var rules = [
+				new Magic.Analyzer.Rules.Indentation()/*,
 				new Magic.Analyzer.Rules.EmptyLines(),
 				new Magic.Analyzer.Rules.ExcessiveSpace(),
 				new Magic.Analyzer.Rules.KeywordSpacing(),
@@ -24,7 +25,7 @@ module Magic {
 				new Magic.Analyzer.Rules.RedundantTypeInfo(),
 				new Magic.Analyzer.Rules.Func(),
 				new Magic.Analyzer.Rules.ThisUsage(),
-				new Magic.Analyzer.Rules.Semicolon()
+				new Magic.Analyzer.Rules.Semicolon()*/
 			];
 			var analyzer = new Magic.Analyzer.Analyzer(new Frontend.Glossary(), rules);
 			analyzer.analyze(this.arguments).forEach(report => {
