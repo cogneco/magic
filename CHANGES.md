@@ -7,6 +7,9 @@
 - [0.1.3-alpha](#013-alpha)
 - [0.1.2-alpha](#012-alpha)
 
+# 0.1.9-alpha
+* Improved SeparatorSpacing to trigger if a space is missing before a ```}```, if the previous token is a literal, identifier or keyword.
+
 # 0.1.8-alpha
 
 * Improved SeparatorSpacing to act on tabs where a space was expected
