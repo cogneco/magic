@@ -10,6 +10,7 @@
 
 # 0.1.9-alpha
 * Improved SeparatorSpacing to trigger if a space is missing before a ```}```, if the previous token is a literal, identifier or keyword.
+* Added ```++``` (pre-increment operator) and removed it from the operator spacing rule.
 
 # 0.1.8-alpha
 
