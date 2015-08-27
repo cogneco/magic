@@ -3,23 +3,23 @@
 **Table of Contents**
 
 - [magic](#magic)
-- [Very much readme](#very-much-readme)
-- [Requirements](#requirements)
-  - [If you don't have node.js and/or the Typescript compiler](#if-you-dont-have-nodejs-andor-the-typescript-compiler)
-- [Installation](#installation)
-  - [Using the install script](#using-the-install-script)
-  - [Using the release](#using-the-release)
-- [Build](#build)
-- [Usage](#usage)
-    - [Ignore list](#ignore-list)
-- [Troubleshooting](#troubleshooting)
-- [Credits](#credits)
+- [very much readme](#very-much-readme)
+- [requirements](#requirements)
+  - [if you don't have node.js and/or the Typescript compiler](#if-you-dont-have-nodejs-andor-the-typescript-compiler)
+- [installation](#installation)
+  - [using the install script](#using-the-install-script)
+  - [using the release](#using-the-release)
+- [build](#build)
+- [usage](#usage)
+    - [ignore list](#ignore-list)
+- [troubleshooting](#troubleshooting)
+- [credits](#credits)
 
 #magic
 
 Code analyzer for the [ooc programming language](http://ooc-lang.org).
 
-#very much readme
+# very much readme
 Very, very early alpha stage.
 * The lexer must be improved and streamlined.
 * A parse tree is yet to be implemented.
@@ -28,14 +28,14 @@ This will enable more complex checks. Right now, a limited set of checks has bee
 token list generated from each file.
 * A tab width of 4 is assumed.
 
-#requirements
+# requirements
 Known to work on Linux (x64), status on other platforms is unknown at this time.
 
 * 1: g++ 4.2 or newer (node.js requirement)
 * 2: [node.js](http://nodejs.org/)
 * 3: [Typescript compiler](http://www.typescriptlang.org/) (if you want to build it yourself)
 
-##If you don't have node.js and/or the Typescript compiler
+## if you don't have node.js and/or the Typescript compiler
 First, install g++. Open up a terminal window and issue the following command, then follow the on-screen instructions.
 ```
 sudo apt-get install g++
@@ -89,13 +89,13 @@ in your ```$PATH```. To find out, issue the command ```echo $PATH``` in the term
 * Move the file ```magic``` to a location of your choosing (we recommend ```/usr/local/bin``` or any other standard bin directory(this may require ```sudo```))
 * That's it.
 
-#build
+# build
 If you have modified magic and want to rebuild it, make sure you're in magic's root folder,
 then do one of the following:
 * Compile directly: ```tsc```. The build output is located in ```./build```. To run magic, issue ```node ./build/magic.js TARGET_DIR```
 * Run the installer: See [Using the install script](#using-the-install-script)
 
-#usage
+# usage
 If you don't specify a target directory, your current location will be used.
 
 ```
@@ -121,7 +121,7 @@ process files that match a certain pattern, for example, to analyze all files th
 magic ~/projects/my_awesome_project/source/math/Matrix*.ooc
 ```
 
-###ignore list
+### ignore list
 If you want to prevent magic from analyzing certain folders or files in your project directory,
 create a file called ```.magicignore``` and put it in the root folder of your project. In this file
 you add everything you want to keep from magic, __relative to the project root folder__.
@@ -132,7 +132,7 @@ lib/somethirdpartylibrary
 source/math/Transform.ooc
 ```
 
-#troubleshooting
+# troubleshooting
 Here are some problems that may occur along the way, and hopefully, solutions to them.
 * __I have installed magic, but can't seem to run it?__ Make sure the system knows where to look for it.
 Try executing ```command -v magic```. The output should point to where magic is installed, if it is empty,
