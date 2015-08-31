@@ -19,8 +19,11 @@ module Magic.Analyzer.Rules {
 						} else {
 							var message = "missing space after separator";
 							if (previous.kind == Frontend.TokenKind.SeparatorRightParanthesis) {
-								if (t.kind == Frontend.TokenKind.SeparatorRightCurly) {
-									this.addViolation(message, report, t, previous);
+								switch (t.kind) {
+									case Frontend.TokenKind.SeparatorLeftCurly:
+									case Frontend.TokenKind.SeparatorRightCurly:
+										this.addViolation(message, report, t, previous);
+										break;
 								}
 							} else {
 								if (t.kind != Frontend.TokenKind.WhitespaceSpace && t.kind != Frontend.TokenKind.WhitespaceLineFeed) {
