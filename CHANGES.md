@@ -1,4 +1,5 @@
 **Table of Contents**
+- [0.1.10-alpha](#0110-alpha)
 - [0.1.9-alpha](#019-alpha)
 - [0.1.8-alpha](#018-alpha)
 - [0.1.7-alpha](#017-alpha)
@@ -7,6 +8,9 @@
 - [0.1.4-alpha](#014-alpha)
 - [0.1.3-alpha](#013-alpha)
 - [0.1.2-alpha](#012-alpha)
+
+# 0.1.10-alpha
+* Improved separator spacing rule to trigger when a space is missing between ```)``` and ```{```
 
 # 0.1.9-alpha
 * Improved SeparatorSpacing to trigger if a space is missing before a ```}```, if the previous token is a literal, identifier or keyword.
