@@ -31,8 +31,7 @@ module Magic {
 			analyzer.analyze(this.arguments).forEach(report => {
 				if (report.violations.length > 0) {
 					var file = report.violations[0].location.filename;
-					console.log("\033[1m\n" + file + "\033[0m");
-					console.log(Utilities.String.padRight("", "-", file.length));
+					console.log("\033[1m\033[4m\n" + file + "\033[0m");
 					report.violations.forEach(v => {
 						console.log(Utilities.String.padRight(v.location.toString(), ".", 14) + v.message);
 					});
