@@ -10,7 +10,9 @@
 - [0.1.2-alpha](#012-alpha)
 
 # 0.1.10-alpha
+* Fixed redundant type info rule so that it does not trigger when one or more of the arguments are pointers
 * Improved separator spacing rule to trigger when a space is missing between ```)``` and ```{```
+* Changed console colors
 
 # 0.1.9-alpha
 * Improved SeparatorSpacing to trigger if a space is missing before a ```}```, if the previous token is a literal, identifier or keyword.
