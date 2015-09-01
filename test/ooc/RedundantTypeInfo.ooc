@@ -4,3 +4,4 @@ Foobar: func -> SomeType { SomeType new(this width as Float, this height as Floa
 Moobar: func (x: Float, y: Float, z: Float) -> Koobar {
 	// Dummy comment
 }
+glGetBooleanv: extern func (pname: UInt, params: UInt*) { /* */ }
