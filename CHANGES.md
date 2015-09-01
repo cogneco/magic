@@ -11,6 +11,7 @@
 - [0.1.2-alpha](#012-alpha)
 
 # 0.1.11-alpha
+* Fixed a bug in redundant type info rule
 
 # 0.1.10-alpha
 * Fixed redundant type info rule so that it does not trigger when one or more of the arguments are pointers
