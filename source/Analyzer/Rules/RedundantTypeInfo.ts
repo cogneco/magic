@@ -17,8 +17,12 @@ module Magic.Analyzer.Rules {
 							var types: string[] = [];
 							while (tokens[i].kind != Frontend.TokenKind.SeparatorRightParanthesis) {
 								if (tokens[i].kind == Frontend.TokenKind.Identifier || tokens[i].kind == Frontend.TokenKind.VarArgs) {
-									if (nextIsType && tokens[i + 1].kind != Frontend.TokenKind.OperatorMultiply) {
-										types.push(tokens[i].value);
+									if (nextIsType) {
+										if (tokens[i + 1].kind == Frontend.TokenKind.OperatorMultiply) {
+											types.push(tokens[i].value + "*")
+										} else {
+											types.push(tokens[i].value);
+										}
 									} else {
 										idents.push(tokens[i].value);
 									}

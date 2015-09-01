@@ -5,3 +5,5 @@ Moobar: func (x: Float, y: Float, z: Float) -> Koobar {
 	// Dummy comment
 }
 glGetBooleanv: extern func (pname: UInt, params: UInt*) { /* */ }
+eglCreatePbufferSurface: extern func (display: Pointer, config: Pointer, attridList: Int*) -> Pointer
+eglCreateContext: extern func (display: Pointer, config: Pointer, sharedContext: Pointer, attribList: Int*) -> Pointer
