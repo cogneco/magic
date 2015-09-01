@@ -1,4 +1,5 @@
 **Table of Contents**
+- [0.1.11-alpha](#0111-alpha)
 - [0.1.10-alpha](#0110-alpha)
 - [0.1.9-alpha](#019-alpha)
 - [0.1.8-alpha](#018-alpha)
@@ -8,6 +9,8 @@
 - [0.1.4-alpha](#014-alpha)
 - [0.1.3-alpha](#013-alpha)
 - [0.1.2-alpha](#012-alpha)
+
+# 0.1.11-alpha
 
 # 0.1.10-alpha
 * Fixed redundant type info rule so that it does not trigger when one or more of the arguments are pointers
