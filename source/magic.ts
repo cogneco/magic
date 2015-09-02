@@ -14,7 +14,7 @@ module Magic {
 			this.arguments = command;
 		}
 
-		analyze() {
+		analyze(): boolean {
 			var rules = [
 				/*new Magic.Analyzer.Rules.Indentation(),*/
 				new Magic.Analyzer.Rules.EmptyLines(),
@@ -27,9 +27,11 @@ module Magic {
 				new Magic.Analyzer.Rules.ThisUsage(),
 				new Magic.Analyzer.Rules.Semicolon()
 			];
+			var success = true;
 			var analyzer = new Magic.Analyzer.Analyzer(new Frontend.Glossary(), rules);
 			analyzer.analyze(this.arguments).forEach(report => {
 				if (report.violations.length > 0) {
+					success = false
 					var file = report.violations[0].location.filename;
 					console.log("\033[1m\033[4m\n" + file + "\033[0m");
 					report.violations.forEach(v => {
@@ -37,6 +39,7 @@ module Magic {
 					});
 				}
 			});
+			return success;
 		}
 
 		static printVersion() {
@@ -47,8 +50,9 @@ module Magic {
 
 try {
 	var magic = new Magic.MagicEntry(process.argv);
-	magic.analyze()
+	var success = magic.analyze()
 	Magic.MagicEntry.printVersion();
+	process.exit(success ? 0 : 1)
 } catch (Error) {
 	console.log(Error.toString());
 }
