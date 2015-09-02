@@ -12,6 +12,7 @@
 - [0.1.2-alpha](#012-alpha)
 
 # 0.1.12-alpha
+* magic now returns 1 when violations are found
 
 # 0.1.11-alpha
 * Fixed a bug in redundant type info rule
