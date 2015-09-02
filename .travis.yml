@@ -5,4 +5,4 @@ before_install:
   - npm install -g tsc
 script:
   - ./install ./bin
-  - ./bin/magic ./test
+  - ./bin/magic ./test/ooc/NoViolations.ooc
