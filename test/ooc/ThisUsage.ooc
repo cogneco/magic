@@ -1,5 +1,10 @@
 Ignored: cover from SomeCover
 
+Classes: enum {
+	Foobar
+	Moobar
+}
+
 Foobar: class {
 	p: Bool
 	f1: func (foobar: Foobar, p: Bool) -> Bool {
@@ -18,6 +23,10 @@ Foobar: class {
 	}
 	f5: static func -> Bool {
 		return true
+	}
+	f6: static func {
+		// This should not violate the rule
+		v := Classes Foobar
 	}
 }
 
