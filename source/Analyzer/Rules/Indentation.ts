@@ -7,7 +7,6 @@ module Magic.Analyzer.Rules {
 	export class Indentation implements Rule {
 		private level = 1;
 		run(tokens: Frontend.Token[], report: Report) {
-			console.log(tokens[0].location.filename);
 			for (var i = 0; i < tokens.length; i++) {
 				switch (tokens[i].kind) {
 					case Frontend.TokenKind.KeywordClass:
@@ -21,44 +20,50 @@ module Magic.Analyzer.Rules {
 			}
 		}
 		private scanClassBody(tokens: Frontend.Token[], index: number, report: Report) {
-			var delta = 1;
-			var tabs = 0;
-			var nextIsSingleLine: boolean;
-			while (delta > 0 && tokens[index].kind != Frontend.TokenKind.Eof) {
+			var curlyDelta = 1;
+			var tabCount = 0;
+			var previousTabCount = 0;
+			while (curlyDelta > 0 && tokens[index].kind != Frontend.TokenKind.Eof) {
 				switch (tokens[index].kind) {
 					case Frontend.TokenKind.SeparatorLeftCurly:
 						this.level++;
-						delta++;
+						curlyDelta++;
 						break;
 					case Frontend.TokenKind.SeparatorRightCurly:
 						this.level--;
-						delta--;
+						curlyDelta--;
 						break;
-					case Frontend.TokenKind.KeywordIf:
-					case Frontend.TokenKind.KeywordFrom:
-					case Frontend.TokenKind.KeywordWhile:
+					case Frontend.TokenKind.WhitespaceSpace:
+						if (index > 0 && tokens[index - 1].kind == Frontend.TokenKind.WhitespaceLineFeed) {
+							report.addViolation(new Violation(tokens[index].location,
+								"Expected a TAB, found a SPACE", RuleKind.Whitespace));
+						}
 						break;
-						// FALL-THROUGH
-					case Frontend.TokenKind.WhitespaceLineFeed:
-						var correctedLevel: number;
-						while (tokens[++index].kind == Frontend.TokenKind.WhitespaceTab) {
-							tabs++;
+					case Frontend.TokenKind.WhitespaceTab:
+						if (index > 0 && tokens[index - 1].kind != Frontend.TokenKind.WhitespaceTab) {
+							// If there is a TAB instead of a SPACE somewhere, we'll abort the check on this line.
+							// This case should be covered by another rule.
+							break;
 						}
-						if (Frontend.TokenKind[tokens[index].kind].indexOf("Whitespace") < 0) {
-							correctedLevel = this.level - (tokens[index].kind == Frontend.TokenKind.SeparatorRightCurly ? 1 : 0);
-							if (correctedLevel != tabs) {
-								report.addViolation(new Violation(tokens[index].location,
-									"incorrect indentation, expected " + correctedLevel + " tabs, but found " + tabs, RuleKind.General));
-							}
-							tabs = 0;
+						while (tokens[index].kind == Frontend.TokenKind.WhitespaceTab) {
+							tabCount++;
+							index++;
 						}
-						index--;
+						if (tabCount > previousTabCount && tabCount - previousTabCount > 1) {
+							report.addViolation(new Violation(tokens[index].location,
+								"Incorrect indentation, expected " + (previousTabCount + 1) + " but found " + tabCount, RuleKind.Whitespace))
+						}
+						previousTabCount = tabCount;
+						index--
+						break;
+					default:
+						tabCount = 0
 						break;
 				}
 				index++;
 			}
-			if (delta !== 0) {
-				throw Error("[Indentation] -> Expected separator delta to be zero here: '" + delta + "'");
+			if (curlyDelta !== 0) {
+				throw Error("[Indentation] -> Expected separator delta to be zero here: '" + curlyDelta + "'");
 			}
 			return index + 1;
 		}
