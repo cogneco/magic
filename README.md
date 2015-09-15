@@ -3,6 +3,7 @@
 **Table of Contents**
 
 - [magic](#magic)
+- [quick install (Linux)](#linux-quick-install)
 - [very much readme](#very-much-readme)
 - [requirements](#requirements)
   - [if you don't have node.js and/or the Typescript compiler](#if-you-dont-have-nodejs-andor-the-typescript-compiler)
@@ -18,6 +19,20 @@
 #magic
 
 Code analyzer for the [ooc programming language](http://ooc-lang.org).
+
+# Linux quick install
+If you only want to use the release and won't bother with compiling anything yourself, this quick guide is for you.
+
+## Install node
+* 1: [Follow this guide](https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager)
+* 2: Verify that node is installed: ```which node```, the output should be a path.
+
+## Install magic
+* 1: [Download the latest release](https://github.com/cogneco/magic/releases) and unpack it to a location of your choosing
+* 2: ```cd MAGIC_FOLDER```
+* 3: ```sudo ./install``` (default location is ```/usr/local/bin```)
+
+Done! Now head over to the [usage](#usage) section.
 
 # very much readme
 Very, very early alpha stage.
