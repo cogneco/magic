@@ -11,12 +11,24 @@ module Magic.Analyzer.Rules {
 			var spaceLocation: Frontend.TokenLocation;
 			for (var i = 0; i < tokens.length; i++) {
 				switch (tokens[i].kind) {
+					case Frontend.TokenKind.WhitespaceTab:
+						if (tokens[i + 1].kind == Frontend.TokenKind.WhitespaceSpace) {
+							report.addViolation(new Violation(tokens[i + 1].location,
+								"space after tab", RuleKind.Whitespace));
+						}
+						break;
 					case Frontend.TokenKind.WhitespaceSpace:
 						spaceLocation = tokens[i].location;
 						i++;
-						if (tokens[i].kind == Frontend.TokenKind.WhitespaceLineFeed) {
-							report.addViolation(new Violation(tokens[i - 1].location,
-								"space before a line break", RuleKind.Whitespace));
+						switch (tokens[i].kind) {
+							case Frontend.TokenKind.WhitespaceLineFeed:
+								report.addViolation(new Violation(tokens[i - 1].location,
+									"space before a line break", RuleKind.Whitespace));
+								break;
+							case Frontend.TokenKind.WhitespaceTab:
+								report.addViolation(new Violation(tokens[i].location,
+									"tab after a space", RuleKind.Whitespace));
+								break;
 						}
 						while (tokens[i].kind == Frontend.TokenKind.WhitespaceSpace) {
 							spaces++;
