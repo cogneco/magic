@@ -30,7 +30,7 @@ If you only want to use the release and won't bother with compiling anything you
 ## Install magic
 * 1: [Download the latest release](https://github.com/cogneco/magic/releases) and unpack it to a location of your choosing
 * 2: ```cd MAGIC_FOLDER```
-* 3: ```sudo ./install``` (default location is ```/usr/local/bin```)
+* 3: ```sudo cp magic /usr/local/bin```
 
 Done! Now head over to the [usage](#usage) section.
 
