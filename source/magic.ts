@@ -3,7 +3,7 @@ var fs = require("fs");
 
 module Magic {
 	export class MagicEntry {
-		private static version = "0.1.12-alpha";
+		private static version = "0.1.13-alpha";
 		private arguments: string[];
 
 		constructor(command: string[]) {
@@ -16,7 +16,7 @@ module Magic {
 
 		analyze(): boolean {
 			var rules = [
-				/*new Magic.Analyzer.Rules.Indentation(),*/
+				new Magic.Analyzer.Rules.Indentation(),
 				new Magic.Analyzer.Rules.EmptyLines(),
 				new Magic.Analyzer.Rules.ExcessiveSpace(),
 				new Magic.Analyzer.Rules.KeywordSpacing(),
@@ -25,7 +25,8 @@ module Magic {
 				new Magic.Analyzer.Rules.RedundantTypeInfo(),
 				new Magic.Analyzer.Rules.Func(),
 				new Magic.Analyzer.Rules.ThisUsage(),
-				new Magic.Analyzer.Rules.Semicolon()
+				new Magic.Analyzer.Rules.Semicolon(),
+				new Magic.Analyzer.Rules.TabInsteadOfSpace()
 			];
 			var success = true;
 			var analyzer = new Magic.Analyzer.Analyzer(new Frontend.Glossary(), rules);

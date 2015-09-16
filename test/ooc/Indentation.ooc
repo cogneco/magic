@@ -22,6 +22,14 @@ Correct: class {
 		else
 			"moobar"
 	}
+	test: func {
+		destinationX = (
+			8 * source[x + step] -
+			8 * source[x - step] +
+			source[x - 2 * step] -
+			source[x + 2 * step]
+		} as Float / (12.0f * step)
+	}
 }
 
 Incorrect: class {

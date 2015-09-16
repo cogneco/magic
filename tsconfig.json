@@ -13,6 +13,7 @@
 		"source/Analyzer/Rules/EmptyLines.ts",
 		"source/Analyzer/Rules/ExcessiveSpace.ts",
 		"source/Analyzer/Rules/Func.ts",
+		"source/Analyzer/Rules/TabInsteadOfSpace",
 		"source/Analyzer/Rules/Indentation.ts",
 		"source/Analyzer/Rules/KeywordSpacing.ts",
 		"source/Analyzer/Rules/LineLength.ts",
