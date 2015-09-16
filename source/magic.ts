@@ -3,7 +3,7 @@ var fs = require("fs");
 
 module Magic {
 	export class MagicEntry {
-		private static version = "0.1.13-alpha";
+		private static version = "0.1.14-alpha";
 		private arguments: string[];
 
 		constructor(command: string[]) {
