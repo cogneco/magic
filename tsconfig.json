@@ -17,6 +17,7 @@
 		"source/Analyzer/Rules/Indentation.ts",
 		"source/Analyzer/Rules/KeywordSpacing.ts",
 		"source/Analyzer/Rules/LineLength.ts",
+		"source/Analyzer/Rules/NumberLiteral.ts",
 		"source/Analyzer/Rules/OperatorSpacing.ts",
 		"source/Analyzer/Rules/RedundantTypeInfo.ts",
 		"source/Analyzer/Rules/Rule.ts",
