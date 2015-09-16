@@ -1,4 +1,5 @@
 **Table of Contents**
+- [0.1.13-alpha](#0113-alpha)
 - [0.1.12-alpha](#0112-alpha)
 - [0.1.11-alpha](#0111-alpha)
 - [0.1.10-alpha](#0110-alpha)
@@ -10,6 +11,10 @@
 - [0.1.4-alpha](#014-alpha)
 - [0.1.3-alpha](#013-alpha)
 - [0.1.2-alpha](#012-alpha)
+
+# 0.1.13-alpha
+* Implemented simple (limited) indentation rule
+* Improved checks for tabs and spaces
 
 # 0.1.12-alpha
 * magic now returns 1 when violations are found
