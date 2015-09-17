@@ -10,6 +10,8 @@
 		"sourceRoot": "../source"
     },
     "files": [
+		"source/Analyzer/Rules/EmptyLineAfterLeftCurly.ts",
+		"source/Analyzer/Rules/EmptyLineBeforeRightCurly.ts",
 		"source/Analyzer/Rules/EmptyLines.ts",
 		"source/Analyzer/Rules/ExcessiveSpace.ts",
 		"source/Analyzer/Rules/Func.ts",
