@@ -37,10 +37,16 @@ module Magic.Analyzer.Rules {
 							continue;
 						}
 						switch (right.kind) {
+							case Frontend.TokenKind.OperatorLessThan: // Allow This<T> etc.
+								// But do not allow class<T>, must be class <T>
+								if (tokens[i].kind == Frontend.TokenKind.KeywordClass) {
+									report.addViolation(new Violation(right.location,
+										"missing space after keyword 'class'", RuleKind.Keyword));
+								}
+								break;
 							case Frontend.TokenKind.WhitespaceSpace:
 							case Frontend.TokenKind.WhitespaceTab:
 							case Frontend.TokenKind.WhitespaceLineFeed:
-							case Frontend.TokenKind.OperatorLessThan: // Allow This<T> etc.
 							case Frontend.TokenKind.OperatorGreaterThan: // Allow This<T> etc.
 							case Frontend.TokenKind.OperatorConditional: // Allow in? etc.
 							case Frontend.TokenKind.SeparatorColon: // Allow func(class: foo) etc.
