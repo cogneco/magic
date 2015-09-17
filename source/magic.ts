@@ -17,7 +17,8 @@ module Magic {
 		analyze(): boolean {
 			var rules = [
 				new Magic.Analyzer.Rules.Indentation(),
-				new Magic.Analyzer.Rules.EmptyLines(),
+				new Magic.Analyzer.Rules.EmptyLineAfterLeftCurly(),
+				new Magic.Analyzer.Rules.EmptyLineBeforeRightCurly(),
 				new Magic.Analyzer.Rules.ExcessiveSpace(),
 				new Magic.Analyzer.Rules.KeywordSpacing(),
 				new Magic.Analyzer.Rules.OperatorSpacing(),
