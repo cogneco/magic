@@ -1,16 +1,23 @@
 ///<reference path="./../typings/node/node.d.ts" />
+///<reference path="./Analyzer/Analyzer" />
+
 var fs = require("fs");
 
 module Magic {
 	export class MagicEntry {
 		private static version = "0.1.14-alpha";
 		private arguments: string[];
-
+		private sortByLineNumber = false
 		constructor(command: string[]) {
 			command = command.slice(2);
 			if (command.length == 0) {
 				command[0] = ".";
 			}
+			if (command[0] == "-s") {
+				this.sortByLineNumber = true
+				command = command.slice(1)
+			}
+
 			this.arguments = command;
 		}
 
@@ -19,6 +26,9 @@ module Magic {
 				new Magic.Analyzer.Rules.Indentation(),
 				new Magic.Analyzer.Rules.EmptyLineAfterLeftCurly(),
 				new Magic.Analyzer.Rules.EmptyLineBeforeRightCurly(),
+				new Magic.Analyzer.Rules.EmptyLineBeforeEof(),
+				new Magic.Analyzer.Rules.WhitespaceAtBeginningOfFile(),
+				new Magic.Analyzer.Rules.EmptyLines(),
 				new Magic.Analyzer.Rules.ExcessiveSpace(),
 				new Magic.Analyzer.Rules.KeywordSpacing(),
 				new Magic.Analyzer.Rules.OperatorSpacing(),
@@ -31,12 +41,19 @@ module Magic {
 			];
 			var success = true;
 			var analyzer = new Magic.Analyzer.Analyzer(new Frontend.Glossary(), rules);
-			analyzer.analyze(this.arguments).forEach(report => {
+			var analyzerResult = analyzer.analyze(this.arguments)
+			analyzerResult.forEach(report => {
 				if (report.violations.length > 0) {
 					success = false
 					var file = report.violations[0].location.filename;
+					var violations = report.violations
 					console.log("\033[1m\033[4m\n" + file + "\033[0m");
-					report.violations.forEach(v => {
+					if (this.sortByLineNumber) {
+						violations = violations.sort((a, b) => {
+							return a.location.line - b.location.line
+						})
+					}
+					violations.forEach(v => {
 						console.log(Utilities.String.padRight(v.location.toString(), ".", 14) + v.message);
 					});
 				}
