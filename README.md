@@ -135,6 +135,10 @@ process files that match a certain pattern, for example, to analyze all files th
 ```
 magic ~/projects/my_awesome_project/source/math/Matrix*.ooc
 ```
+You may also sort the output of each file by line number, by using ```-s```
+```
+magic -s [TARGET]
+```
 
 ### ignore list
 If you want to prevent magic from analyzing certain folders or files in your project directory,
