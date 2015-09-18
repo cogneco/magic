@@ -14,6 +14,7 @@
 - [0.1.2-alpha](#012-alpha)
 
 # 0.1.14-alpha
+* ```-s``` may now be used to sort violations by line location. ```magic -s [PATH]```
 * re-enabled check for space between keyword 'class' and '<'
 * Improved ThisUsage rule to disengage if it discovers two consecutive identifiers where both starting with a capital letter.
 * Improved indent rule to contextualize the ```class``` keyword
