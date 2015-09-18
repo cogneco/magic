@@ -1,4 +1,5 @@
 ///<reference path="../../typings/node/node.d.ts" />
+///<reference path="./Report" />
 var fs = require("fs");
 
 //
@@ -12,7 +13,7 @@ module Magic.Analyzer {
 
 		constructor(private glossary: Frontend.Glossary, private rules: Rules.Rule[]) { }
 
-		analyze(targets: string[]) {
+		analyze(targets: string[]): Report[] {
 			var reports: Report[] = [];
 			targets.forEach(t => {
 				if (fs.existsSync(t)) {

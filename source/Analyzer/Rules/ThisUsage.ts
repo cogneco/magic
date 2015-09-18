@@ -84,6 +84,12 @@ module Magic.Analyzer.Rules {
 						break;
 					case Frontend.TokenKind.Identifier:
 						if (tokens[index].value === name) {
+							if (tokens[index - 1].kind == Frontend.TokenKind.WhitespaceSpace && tokens[index - 2].kind == Frontend.TokenKind.Identifier) {
+								var character = tokens[index - 2].value.charAt(0)
+								if (character == character.toUpperCase()) {
+									break;
+								}
+							}
 							report.addViolation(new Violation(tokens[index].location,
 								"replace '" + name + "' with 'This'", RuleKind.General));
 						}

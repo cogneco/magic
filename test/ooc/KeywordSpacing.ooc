@@ -1,4 +1,5 @@
-Foobar: class {
+// Space missing between 'class' and '<'
+Foobar: class<T> {
 	// Missing space after keyword
 	foo: extern(foo) func (Float) -> Float
 	// in? should not trigger a missing-space violation here

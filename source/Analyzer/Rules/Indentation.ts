@@ -1,5 +1,6 @@
 /// <reference path="../../Frontend/Token" />
 /// <reference path="../../Frontend/TokenKind" />
+/// <reference path="../../Frontend/TokenLocation" />
 /// <reference path="../Report" />
 /// <reference path="Rule" />
 
@@ -11,6 +12,10 @@ module Magic.Analyzer.Rules {
 				switch (tokens[i].kind) {
 					case Frontend.TokenKind.KeywordClass:
 					case Frontend.TokenKind.KeywordCover:
+					//case Frontend.TokenKind.KeywordFunc:
+						if (i > 2 && tokens[i - 2].kind != Frontend.TokenKind.SeparatorColon) {
+							continue;
+						}
 						while (tokens[++i].kind != Frontend.TokenKind.SeparatorLeftCurly && tokens[i].kind != Frontend.TokenKind.KeywordFrom);
 						if (tokens[i].kind != Frontend.TokenKind.KeywordFrom) {
 							i = this.scanClassBody(tokens, i + 1, report);
@@ -56,6 +61,7 @@ module Magic.Analyzer.Rules {
 						previousTabCount = tabCount;
 						index--
 						break;
+					//case Frontend.TokenKind.KeywordClass:
 					default:
 						tabCount = 0
 						break;
@@ -63,7 +69,8 @@ module Magic.Analyzer.Rules {
 				index++;
 			}
 			if (curlyDelta !== 0) {
-				throw Error("[Indentation] -> Expected separator delta to be zero here: '" + curlyDelta + "'");
+				throw Error("[Indentation] -> Expected separator delta to be zero here: '" + curlyDelta + "'" +
+					"\n\tLocation: " + tokens[index].location.toString() + " in " + tokens[index].location.filename)
 			}
 			return index + 1;
 		}

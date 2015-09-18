@@ -6,26 +6,26 @@
 /// <reference path="../RuleKind" />
 /// <reference path="Rule" />
 
+
 module Magic.Analyzer.Rules {
-	export class EmptyLines implements Rule {
+	export class NumberLiteral implements Rule {
 		constructor() { }
 		run(tokens: Frontend.Token[], report: Report) {
-			var linefeeds = 0
-			var linefeedIndex: number
+			var offset = 0
 			for (var i = 0; i < tokens.length; i++) {
 				switch (tokens[i].kind) {
-					case Frontend.TokenKind.WhitespaceLineFeed:
-						while (tokens[++i].kind == Frontend.TokenKind.WhitespaceLineFeed)
-							linefeeds++
-						linefeedIndex = i - 1
+					case Frontend.TokenKind.LiteralBinary:
+					case Frontend.TokenKind.LiteralHexadecimal:
+					case Frontend.TokenKind.LiteralOctal:
+						// offset = 2
+						break;
+					case Frontend.TokenKind.LiteralFloat:
+					case Frontend.TokenKind.LiteralInteger:
+						// offset = 1 if a float literal contains a ','
 						break;
 					default:
 						break;
 				}
-				if (linefeeds > 1)
-					report.addViolation(new Violation(tokens[linefeedIndex].location,
-						"Found " + linefeeds + " empty line(s)", RuleKind.Whitespace))
-				linefeeds = 0
 			}
 		}
 	}

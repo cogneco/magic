@@ -1,17 +1,23 @@
 
-// Leading empty line
-Foo: class { /* Empty line after opening curly */ // noise
-
-	// Two or more consecutive empty lines
+Foo: class {
 
 
-	x: Int
-	init: func {
-		"%d" printfln(this x)
-		// Empty line before closing curly
+	foo: func (baz: Baz) -> Bar {
+		// very useful function
+		// TODO: change the value to 43
+		myVar := 42
+
 
 	}
-	// An empty line before closing curly
+	foo: func (baz: Baz) -> Bar {
 
-} // Unnecessary line before EOF
+		foo
+		bar
+
+		myVar := 42
+	}
+
+
+
+}
 
