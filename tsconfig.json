@@ -12,7 +12,9 @@
     "files": [
 		"source/Analyzer/Rules/EmptyLineAfterLeftCurly.ts",
 		"source/Analyzer/Rules/EmptyLineBeforeRightCurly.ts",
+		"source/Analyzer/Rules/EmptyLineBeforeEof.ts",
 		"source/Analyzer/Rules/ExcessiveSpace.ts",
+		"source/Analyzer/Rules/EmptyLines.ts",
 		"source/Analyzer/Rules/Func.ts",
 		"source/Analyzer/Rules/TabInsteadOfSpace",
 		"source/Analyzer/Rules/Indentation.ts",
@@ -25,6 +27,7 @@
 		"source/Analyzer/Rules/Semicolon.ts",
 		"source/Analyzer/Rules/SeparatorSpacing.ts",
 		"source/Analyzer/Rules/ThisUsage.ts",
+		"source/Analyzer/Rules/WhitespaceAtBeginningOfFile.ts",
 		"source/Analyzer/Analyzer.ts",
 		"source/Analyzer/Report.ts",
 		"source/Analyzer/RuleKind.ts",
