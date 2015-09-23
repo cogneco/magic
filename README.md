@@ -23,9 +23,15 @@ Code analyzer for the [ooc programming language](http://ooc-lang.org).
 # Linux quick install
 If you only want to use the release and won't bother with compiling anything yourself, this quick guide is for you.
 
-## Install node
-* 1: [Follow this guide](https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager)
-* 2: Verify that node is installed: ```which node```, the output should be a path.
+## Install node 0.12 (Ubuntu)
+[Taken from here (active as of september 2015)](https://nodesource.com/blog/nodejs-v012-iojs-and-the-nodesource-linux-repositories)
+
+[If the first one doesn't do it for you, go here (active as of september 2015)](https://github.com/nodejs/node-v0.x-archive/wiki/Installing-Node.js-via-package-manager)
+
+* 1: Open up a terminal window
+* 2: ```sudo apt-get update && sudo apt-get upgrade```
+* 3: ```curl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -```
+* 4: ```sudo apt-get install -y nodejs```
 
 ## Install magic
 * 1: [Download the latest release](https://github.com/cogneco/magic/releases) and unpack it to a location of your choosing
