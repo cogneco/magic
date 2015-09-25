@@ -37,7 +37,8 @@ module Magic {
 				new Magic.Analyzer.Rules.Func(),
 				new Magic.Analyzer.Rules.ThisUsage(),
 				new Magic.Analyzer.Rules.Semicolon(),
-				new Magic.Analyzer.Rules.TabInsteadOfSpace()
+				new Magic.Analyzer.Rules.TabInsteadOfSpace(),
+				new Magic.Analyzer.Rules.SpaceBeforeSeparator()
 			];
 			var success = true;
 			var analyzer = new Magic.Analyzer.Analyzer(new Frontend.Glossary(), rules);

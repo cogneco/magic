@@ -28,6 +28,7 @@
 		"source/Analyzer/Rules/SeparatorSpacing.ts",
 		"source/Analyzer/Rules/ThisUsage.ts",
 		"source/Analyzer/Rules/WhitespaceAtBeginningOfFile.ts",
+		"source/Analyzer/Rules/SpaceBeforeSeparator.ts",
 		"source/Analyzer/Analyzer.ts",
 		"source/Analyzer/Report.ts",
 		"source/Analyzer/RuleKind.ts",
