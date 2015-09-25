@@ -1,3 +1,8 @@
+/// <reference path="Token" />
+/// <reference path="TokenKind" />
+/// <reference path="CharacterReader" />
+/// <reference path="Glossary" />
+
 module Magic.Frontend {
 	export class Lexer {
 		private line = 1;
@@ -53,8 +58,7 @@ module Magic.Frontend {
 				}
 				// Char literal
 				else if (next === "'") {
-					result = new Token(this.location, TokenKind.LiteralChar, this.reader.getNext(), 2);
-					this.reader.advance();
+					result = this.handleCharLiteral(this.reader.getNext())
 				}
 				// Keyword, identifier (words)
 				else if (this.isValidIdentifierCharacter(next, true)) {
@@ -73,7 +77,13 @@ module Magic.Frontend {
 			this.updateLocation(result);
 			return result;
 		}
-
+		private handleCharLiteral(firstChar: string) {
+			var result = firstChar
+			if (firstChar == '\\')
+				result = firstChar + this.reader.getNext()
+			this.reader.advance()
+			return new Token(this.location, TokenKind.LiteralChar, result, 2)
+		}
 		private handleImport(firstChar: string) {
 			var result = firstChar;
 			while (this.reader.hasNext && this.reader.peek() !== "\n") {
