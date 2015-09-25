@@ -5,7 +5,7 @@ var fs = require("fs");
 
 module Magic {
 	export class MagicEntry {
-		private static version = "0.1.15-alpha";
+		private static version = "0.1.16-alpha";
 		private arguments: string[];
 		private sortByLineNumber = false
 		constructor(command: string[]) {
@@ -37,7 +37,8 @@ module Magic {
 				new Magic.Analyzer.Rules.Func(),
 				new Magic.Analyzer.Rules.ThisUsage(),
 				new Magic.Analyzer.Rules.Semicolon(),
-				new Magic.Analyzer.Rules.TabInsteadOfSpace()
+				new Magic.Analyzer.Rules.TabInsteadOfSpace(),
+				new Magic.Analyzer.Rules.SpaceBeforeSeparator()
 			];
 			var success = true;
 			var analyzer = new Magic.Analyzer.Analyzer(new Frontend.Glossary(), rules);
