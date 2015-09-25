@@ -1,4 +1,5 @@
 **Table of Contents**
+- [0.1.15-alpha](#0115-alpha)
 - [0.1.14-alpha](#0114-alpha)
 - [0.1.13-alpha](#0113-alpha)
 - [0.1.12-alpha](#0112-alpha)
@@ -12,6 +13,9 @@
 - [0.1.4-alpha](#014-alpha)
 - [0.1.3-alpha](#013-alpha)
 - [0.1.2-alpha](#012-alpha)
+
+# 0.1.15-alpha
+* fixed a bug where escape sequence within a char literal were not read correctly
 
 # 0.1.14-alpha
 * ```-s``` may now be used to sort violations by line location. ```magic -s [PATH]```
