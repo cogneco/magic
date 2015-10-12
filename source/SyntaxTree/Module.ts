@@ -19,7 +19,7 @@ module Magic.SyntaxTree {
 		}
 		static parse(source: Source): Module {
 			var result: Module
-			if (source.peek()) {
+			if (source.peek() && !(source.peek() instanceof Tokens.EndOfFile)) {
 				var statements: Statement[] = []
 				var next: Statement
 				while (next = Statement.parse(source.clone()))
