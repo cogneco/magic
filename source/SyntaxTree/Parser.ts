@@ -13,7 +13,7 @@ module Magic.SyntaxTree {
 		constructor(tokens: Utilities.Iterator<Tokens.Substance>, errorHandler: Error.Handler) {
 			this.source = new Source(tokens, errorHandler)
 		}
-		next() : Module {
+		next(): Module {
 			return Module.parse(this.source)
 		}
 	}

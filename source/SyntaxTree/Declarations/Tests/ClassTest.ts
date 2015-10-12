@@ -25,9 +25,7 @@ module Magic.SyntaxTree.Tests {
 				this.expect(classDeclaration, Is.Not().NullOrUndefined())
 				this.expect(classDeclaration.getSymbol(), Is.Equal().To("Empty"))
 				this.expect(statements.next(), Is.NullOrUndefined())
-				// TODO: Fix finishing
-//				var m = parser.next()
-//				this.expect(m, Is.NullOrUndefined())
+				//this.expect(parser.next(), Is.NullOrUndefined())
 			})
 			this.add("generic class #1", () => {
 				var handler = new Error.ConsoleHandler()
@@ -37,7 +35,8 @@ module Magic.SyntaxTree.Tests {
 				var classDeclaration = <Declarations.Class> statements.next()
 				this.expect(classDeclaration, Is.Not().NullOrUndefined())
 				this.expect(classDeclaration.getTypeParameters().next().getName(), Is.Equal().To("T"))
-//				this.expect(statements.next(), Is.NullOrUndefined()) // TODO: Fix
+				this.expect(statements.next(), Is.NullOrUndefined())
+				//this.expect(parser.next(), Is.NullOrUndefined())
 			})
 			this.add("generic class #2", () => {
 				var handler = new Error.ConsoleHandler()
@@ -49,15 +48,16 @@ module Magic.SyntaxTree.Tests {
 				this.expect(typeParameters.next().getName(), Is.Equal().To("T"))
 				this.expect(typeParameters.next().getName(), Is.Equal().To("S"))
 				this.expect(statements.next(), Is.NullOrUndefined())
-//				this.expect(parser.next(), Is.NullOrUndefined()) // TODO: fix
+				//this.expect(parser.next(), Is.NullOrUndefined())
 			})
 			this.add("class extends", () => {
 				var handler = new Error.ConsoleHandler()
 				var parser = new Parser(new Tokens.GapRemover(new Tokens.Lexer(new IO.StringReader("Empty: class extends Full {\n}\n"), handler)), handler)
 				var classDeclaration = <Declarations.Class> parser.next().getStatements().next()
 				this.expect(classDeclaration.getExtended().getName(), Is.Equal().To("Full"))
+				//this.expect(parser.next(), Is.NullOrUndefined())
 			})
-/*			this.add("class implements", () => {
+			this.add("class implements", () => {
 				var handler = new Error.ConsoleHandler()
 				var parser = new Parser(new Tokens.GapRemover(new Tokens.Lexer(new IO.StringReader("Empty: class implements Enumerable, Enumerator {\n}\n"), handler)), handler)
 				var module = parser.next()
@@ -65,6 +65,8 @@ module Magic.SyntaxTree.Tests {
 				var implemented = classDeclaration.getImplemented()
 				this.expect(implemented.next().getName(), Is.Equal().To("Enumerable"))
 				this.expect(implemented.next().getName(), Is.Equal().To("Enumerator"))
+				this.expect(implemented.next(), Is.NullOrUndefined())
+				//this.expect(parser.next(), Is.NullOrUndefined())
 			})
 			this.add("generic class implements generic interfaces", () => {
 				var handler = new Error.ConsoleHandler()
@@ -77,13 +79,17 @@ module Magic.SyntaxTree.Tests {
 				var typeParameters1 = interface1.getTypeParameters()
 				this.expect(typeParameters1.next().getName(), Is.Equal().To("T"))
 				this.expect(typeParameters1.next().getName(), Is.Equal().To("S"))
+				this.expect(typeParameters1.next(), Is.NullOrUndefined())
 				var interface2 = implemented.next()
-				this.expect(interface1.getName(), Is.Equal().To("Interface2"))
+				this.expect(interface2.getName(), Is.Equal().To("Interface2"))
 				var typeParameters2 = interface2.getTypeParameters()
 				this.expect(typeParameters2.next().getName(), Is.Equal().To("T"))
 				this.expect(typeParameters2.next().getName(), Is.Equal().To("S"))
+				this.expect(typeParameters2.next(), Is.NullOrUndefined())
+				this.expect(implemented.next(), Is.NullOrUndefined())
+				//this.expect(parser.next(), Is.NullOrUndefined())
 			})
-*/		}
+		}
 	}
 	Unit.Fixture.add(new ClassTest())
 }
