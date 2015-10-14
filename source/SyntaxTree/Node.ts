@@ -3,7 +3,7 @@
 /// <reference path="../Tokens/Substance" />
 
 module Magic.SyntaxTree {
-	export class Node  {
+	export abstract class Node  {
 		constructor(private tokens: Tokens.Substance[]) {
 		}
 		getTokens(): Utilities.Iterator<Tokens.Substance> {

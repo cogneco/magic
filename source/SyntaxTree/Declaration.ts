@@ -5,7 +5,7 @@
 /// <reference path="Type/Name" />
 
 module Magic.SyntaxTree {
-	export class Declaration extends Statement {
+	export abstract class Declaration extends Statement {
 		constructor(private symbol: string, tokens: Tokens.Substance[]) {
 			super(tokens)
 		}
