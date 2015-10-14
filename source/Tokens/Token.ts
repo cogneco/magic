@@ -1,7 +1,7 @@
 /// <reference path="../Error/Region" />
 
 module Magic.Tokens {
-	export class Token {
+	export abstract class Token {
 		constructor(private region: Error.Region) { }
 		getRegion() { return this.region; }
 		toString() {

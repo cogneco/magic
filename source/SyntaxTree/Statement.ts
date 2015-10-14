@@ -4,7 +4,7 @@
 /// <reference path="../Tokens/EndOfFile" />
 
 module Magic.SyntaxTree {
-	export class Statement extends Node {
+	export abstract class Statement extends Node {
 		constructor(tokens: Tokens.Substance[]) {
 			super(tokens)
 		}

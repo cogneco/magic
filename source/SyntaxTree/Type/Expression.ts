@@ -5,7 +5,7 @@
 /// <reference path="../../Utilities/ArrayIterator" />
 
 module Magic.SyntaxTree.Type {
-	export class Expression extends Node {
+	export abstract class Expression extends Node {
 		constructor(tokens: Tokens.Substance[]) {
 			super(tokens)
 		}
