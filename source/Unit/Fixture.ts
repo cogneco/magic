@@ -6,7 +6,7 @@
 /// <reference path="../Utilities/String" />
 
 module Magic.Unit {
-	export class Fixture {
+	export abstract class Fixture {
 		private tests: Test[] = []
 		private expectId = 0
 		private consoleHandler: Error.ConsoleHandler
