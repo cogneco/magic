@@ -1,5 +1,7 @@
 /// <reference path="../../Frontend/Token" />
 /// <reference path="../../Frontend/TokenKind" />
+/// <reference path="../Violation" />
+/// <reference path="../RuleKind" />
 /// <reference path="../Report" />
 /// <reference path="Rule" />
 
@@ -50,6 +52,8 @@ module Magic.Analyzer.Rules {
 							case Frontend.TokenKind.OperatorGreaterThan: // Allow This<T> etc.
 							case Frontend.TokenKind.OperatorConditional: // Allow in? etc.
 							case Frontend.TokenKind.SeparatorColon: // Allow func(class: foo) etc.
+								break;
+							case Frontend.TokenKind.OperatorMultiply: // Allow 'Keyword*'
 								break;
 							default:
 								report.addViolation(new Violation(right.location,

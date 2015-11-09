@@ -1,6 +1,8 @@
 /// <reference path="../../Frontend/Token" />
 /// <reference path="../../Frontend/TokenKind" />
 /// <reference path="../Report" />
+/// <reference path="../Violation" />
+/// <reference path="../RuleKind" />
 /// <reference path="Rule" />
 
 module Magic.Analyzer.Rules {
@@ -18,7 +20,6 @@ module Magic.Analyzer.Rules {
 						// different things depending on the context, or are too much of a hassle
 						// to work with when reading a token list instead of a parse tree.
 						case Frontend.TokenKind.KeywordOperator:
-						case Frontend.TokenKind.OperatorDereference:
 						case Frontend.TokenKind.OperatorLessThan:
 						case Frontend.TokenKind.OperatorGreaterThan:
 						case Frontend.TokenKind.OperatorAssign:
@@ -33,6 +34,11 @@ module Magic.Analyzer.Rules {
 						case Frontend.TokenKind.OperatorLogicalOr:
 						case Frontend.TokenKind.OperatorRightShift:
 						case Frontend.TokenKind.OperatorPreIncrement:
+							break;
+						case Frontend.TokenKind.OperatorDereference:
+							if (previous.kind == Frontend.TokenKind.WhitespaceSpace)
+								report.addViolation(new Violation(t.location,
+								"found a space before operator '" + t.value + "'", RuleKind.Operator));
 							break;
 						default:
 							var left = previous;

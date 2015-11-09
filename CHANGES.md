@@ -15,6 +15,10 @@
 - [0.1.3-alpha](#013-alpha)
 - [0.1.2-alpha](#012-alpha)
 
+# 0.1.17-alpha
+* Fixed so a space is no longer required between a keyword and the ```*``` operator.
+* New rule: operator ```@``` must not have a space to the left
+
 # 0.1.16-alpha
 * New rule: whitespace is not allowed between identifier and colon in a function definition
 
