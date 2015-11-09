@@ -1,4 +1,6 @@
 **Table of Contents**
+- [0.1.18-alpha](#0118-alpha)
+- [0.1.17-alpha](#0117-alpha)
 - [0.1.16-alpha](#0116-alpha)
 - [0.1.15-alpha](#0115-alpha)
 - [0.1.14-alpha](#0114-alpha)
@@ -14,6 +16,9 @@
 - [0.1.4-alpha](#014-alpha)
 - [0.1.3-alpha](#013-alpha)
 - [0.1.2-alpha](#012-alpha)
+
+# 0.1.18-alpha
+* Fixed broken rule regarding empty line before EOF requirement
 
 # 0.1.17-alpha
 * Fixed so a space is no longer required between a keyword and the ```*``` operator.
