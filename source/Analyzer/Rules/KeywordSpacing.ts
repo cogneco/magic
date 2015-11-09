@@ -52,7 +52,8 @@ module Magic.Analyzer.Rules {
 							case Frontend.TokenKind.OperatorGreaterThan: // Allow This<T> etc.
 							case Frontend.TokenKind.OperatorConditional: // Allow in? etc.
 							case Frontend.TokenKind.SeparatorColon: // Allow func(class: foo) etc.
-							case Frontend.TokenKind.OperatorMultiply: // Allow This*
+								break;
+							case Frontend.TokenKind.OperatorMultiply: // Allow 'Keyword*'
 								break;
 							default:
 								report.addViolation(new Violation(right.location,
