@@ -1,5 +1,23 @@
 ///<reference path="./../typings/node/node.d.ts" />
 ///<reference path="./Analyzer/Analyzer" />
+///<reference path="./Analyzer/Rules/Indentation" />
+///<reference path="./Analyzer/Rules/EmptyLineAfterLeftCurly" />
+///<reference path="./Analyzer/Rules/EmptyLineBeforeRightCurly" />
+///<reference path="./Analyzer/Rules/EmptyLineBeforeEof" />
+///<reference path="./Analyzer/Rules/WhitespaceAtBeginningOfFile" />
+///<reference path="./Analyzer/Rules/EmptyLines" />
+///<reference path="./Analyzer/Rules/ExcessiveSpace" />
+///<reference path="./Analyzer/Rules/KeywordSpacing" />
+///<reference path="./Analyzer/Rules/OperatorSpacing" />
+///<reference path="./Analyzer/Rules/SeparatorSpacing" />
+///<reference path="./Analyzer/Rules/RedundantTypeInfo" />
+///<reference path="./Analyzer/Rules/Func" />
+///<reference path="./Analyzer/Rules/ThisUsage" />
+///<reference path="./Analyzer/Rules/Semicolon" />
+///<reference path="./Analyzer/Rules/TabInsteadOfSpace" />
+///<reference path="./Analyzer/Rules/SpaceBeforeSeparator" />
+///<reference path="./Frontend/Glossary" />
+///<reference path="./Utilities/String" />
 
 var fs = require("fs");
 
