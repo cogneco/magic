@@ -31,7 +31,11 @@ module Magic.Analyzer.Rules {
 							}
 						}
 						linefeeds--
-						if (linefeeds > 0)
+						if (linefeeds < 0) {
+							report.addViolation(new Violation(tokens[i].location,
+									"missing empty line before end of file", RuleKind.Whitespace));
+						}
+						else if (linefeeds > 0)
 							report.addViolation(new Violation(tokens[i - 1].location,
 								"found " + linefeeds + " extra empty line(s) before end of file (keep one empty)", RuleKind.Whitespace));
 						break;
