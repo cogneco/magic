@@ -2,6 +2,8 @@
 /// <reference path="../../Frontend/TokenKind" />
 /// <reference path="../Report" />
 /// <reference path="Rule" />
+/// <reference path="../Violation" />
+/// <reference path="../RuleKind" />
 
 module Magic.Analyzer.Rules {
 	export class Func implements Rule {
@@ -19,7 +21,7 @@ module Magic.Analyzer.Rules {
 						while (!canExit && tokens[i].kind != Frontend.TokenKind.Eof) {
 							switch (tokens[i].kind) {
 								case Frontend.TokenKind.SeparatorLeftParanthesis:
-									if (!insideBlock && tokens[i - 1].kind == Frontend.TokenKind.Identifier) {
+									if (!insideBlock && tokens[i - 2].kind == Frontend.TokenKind.OperatorNegate && tokens[i - 1].kind == Frontend.TokenKind.Identifier) {
 										report.addViolation(new Violation(tokens[i].location,
 											"missing space between func identifier and parenthesis",
 											RuleKind.General));

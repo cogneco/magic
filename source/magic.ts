@@ -23,7 +23,7 @@ var fs = require("fs");
 
 module Magic {
 	export class MagicEntry {
-		private static version = "0.1.18-alpha";
+		private static version = "0.1.19-alpha";
 		private arguments: string[];
 		private sortByLineNumber = false
 		constructor(command: string[]) {
