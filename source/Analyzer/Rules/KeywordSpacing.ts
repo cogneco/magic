@@ -46,6 +46,7 @@ module Magic.Analyzer.Rules {
 										"missing space after keyword 'class'", RuleKind.Keyword));
 								}
 								break;
+							case Frontend.TokenKind.OperatorBitwiseAnd:
 							case Frontend.TokenKind.WhitespaceSpace:
 							case Frontend.TokenKind.WhitespaceTab:
 							case Frontend.TokenKind.WhitespaceLineFeed:
