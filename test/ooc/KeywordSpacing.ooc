@@ -8,5 +8,7 @@ Foobar: class<T> {
 	someFunc: func (moo: Int) -> Moobar<This> {
 		moo = foo
 	}
-	func (class: UInt)
+	func (class: UInt) {
+		foo new(this & as Type)
+	}
 }
