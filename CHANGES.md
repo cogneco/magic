@@ -1,4 +1,5 @@
 **Table of Contents**
+- [0.1.21-alpha](#0121-alpha)
 - [0.1.20-alpha](#0120-alpha)
 - [0.1.19-alpha](#0119-alpha)
 - [0.1.18-alpha](#0118-alpha)
@@ -18,6 +19,9 @@
 - [0.1.4-alpha](#014-alpha)
 - [0.1.3-alpha](#013-alpha)
 - [0.1.2-alpha](#012-alpha)
+
+# 0.1.21-alpha
+* Keywords may now have a left parenthesis immediately to its right
 
 # 0.1.20-alpha
 * Allow & after keyword
