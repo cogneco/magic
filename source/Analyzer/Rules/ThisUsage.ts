@@ -11,6 +11,7 @@ module Magic.Analyzer.Rules {
 			var className: string;
 			var isClass = false;
 			var isCoverFrom = false;
+			var isExternCover = false;
 			for (var i = 0; i < tokens.length; i++) {
 				if (tokens[i].kind == Frontend.TokenKind.Identifier) {
 					className = tokens[i].value;
@@ -21,6 +22,10 @@ module Magic.Analyzer.Rules {
 									isCoverFrom = true;
 									i++;
 									break;
+								} else if (tokens[i - 1].kind == Frontend.TokenKind.KeywordExtern) {
+									isExternCover = true;
+									i++;
+									break;
 								}
 								i++;
 							}
@@ -29,7 +34,7 @@ module Magic.Analyzer.Rules {
 						}
 						i++;
 					}
-					if (isClass && !isCoverFrom) {
+					if (isClass && !isCoverFrom && !isExternCover) {
 						i = this.analyzeClassBody(tokens, report, i, className);
 						isClass = false;
 					}
