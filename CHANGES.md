@@ -1,4 +1,6 @@
 **Table of Contents**
+- [0.1.23-alpha](#0123-alpha)
+- [0.1.22-alpha](#0122-alpha)
 - [0.1.21-alpha](#0121-alpha)
 - [0.1.20-alpha](#0120-alpha)
 - [0.1.19-alpha](#0119-alpha)
@@ -19,6 +21,12 @@
 - [0.1.4-alpha](#014-alpha)
 - [0.1.3-alpha](#013-alpha)
 - [0.1.2-alpha](#012-alpha)
+
+# 0.1.23-alpha
+* Fixed a false positive in RedundantTypeInfo rule
+
+# 0.1.22-alpha
+* Fixed a false positive in ThisUsage rule
 
 # 0.1.21-alpha
 * Keywords may now have a left parenthesis immediately to its right
