@@ -1,6 +1,8 @@
 /// <reference path="../../Frontend/Token" />
 /// <reference path="../../Frontend/TokenKind" />
 /// <reference path="../Report" />
+/// <reference path="../Violation" />
+/// <reference path="../RuleKind" />
 /// <reference path="Rule" />
 
 module Magic.Analyzer.Rules {
@@ -10,7 +12,7 @@ module Magic.Analyzer.Rules {
 			for (var i = 0; i < tokens.length; i++) {
 				if (tokens[i].kind == Frontend.TokenKind.KeywordFunc) {
 					while (tokens[i].kind != Frontend.TokenKind.Eof && tokens[i].kind != Frontend.TokenKind.WhitespaceLineFeed && tokens[i].kind != Frontend.TokenKind.SeparatorLeftCurly) {
-						if (tokens[i].kind == Frontend.TokenKind.SeparatorLeftParanthesis) {
+						if (tokens[i].kind == Frontend.TokenKind.SeparatorLeftParanthesis && this.previousNonWhitespaceToken(tokens, i).kind != Frontend.TokenKind.OperatorReturnType) {
 							i++;
 							var nextIsType = false;
 							var idents: string[] = [];
@@ -51,6 +53,13 @@ module Magic.Analyzer.Rules {
 					}
 				}
 			}
+		}
+		private previousNonWhitespaceToken(tokens: Frontend.Token[], index: number) {
+			var i = index - 1;
+			while (i > 0 && Frontend.TokenKind[tokens[i].kind].indexOf("Whitespace") > -1) {
+				i--;
+			}
+			return tokens[i];
 		}
 	}
 }
