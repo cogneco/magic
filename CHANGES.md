@@ -1,4 +1,5 @@
 **Table of Contents**
+- [0.1.24-alpha](#0124-alpha)
 - [0.1.23-alpha](#0123-alpha)
 - [0.1.22-alpha](#0122-alpha)
 - [0.1.21-alpha](#0121-alpha)
@@ -21,6 +22,9 @@
 - [0.1.4-alpha](#014-alpha)
 - [0.1.3-alpha](#013-alpha)
 - [0.1.2-alpha](#012-alpha)
+
+# 0.1.24-alpha
+* Fixed a false positive in RedundantTypeInfo rule where it would incorrectly trigger on operator `:=`
 
 # 0.1.23-alpha
 * Fixed a false positive in RedundantTypeInfo rule

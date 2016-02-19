@@ -17,7 +17,7 @@ module Magic.Analyzer.Rules {
 							var nextIsType = false;
 							var idents: string[] = [];
 							var types: string[] = [];
-							while (tokens[i].kind != Frontend.TokenKind.SeparatorRightParanthesis) {
+							while (tokens[i].kind != Frontend.TokenKind.SeparatorRightParanthesis && tokens[i].kind != Frontend.TokenKind.OperatorDeclareAssign) {
 								if (tokens[i].kind == Frontend.TokenKind.Identifier || tokens[i].kind == Frontend.TokenKind.VarArgs) {
 									if (nextIsType) {
 										if (tokens[i + 1].kind == Frontend.TokenKind.OperatorMultiply) {
