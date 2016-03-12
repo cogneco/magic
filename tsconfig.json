@@ -1,11 +1,11 @@
 {
     "compilerOptions": {
-		"target": "ES5",
-		"module": "commonjs",
+		"target": "es5",
+		"module": "system",
         "noImplicitAny": false,
         "removeComments": true,
         "preserveConstEnums": true,
-        "out": "build/magic.js",
+        "outFile": "build/magic.js",
         "sourceMap": true,
 		"sourceRoot": "../source"
     },
