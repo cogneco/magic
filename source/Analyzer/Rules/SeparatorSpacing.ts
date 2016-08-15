@@ -32,6 +32,11 @@ module Magic.Analyzer.Rules {
 							}
 						}
 						break;
+					case Frontend.TokenKind.OperatorGreaterThan:
+						if (t.kind == Frontend.TokenKind.SeparatorLeftCurly) {
+								report.addViolation(new Violation(t.location, "missing space before separator '" + t.value + "'", RuleKind.Operator));
+						}
+						break;
 					default:
 						switch (t.kind) {
 							case Frontend.TokenKind.SeparatorRightCurly:
