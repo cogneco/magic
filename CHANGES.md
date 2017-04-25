@@ -26,6 +26,7 @@
 
 # 0.1.25-alpha
 * Fixed so space is required between `>` and `{`
+* Fixed a bug in the RedundantTypeInfo rule.
 
 # 0.1.24-alpha
 * Fixed a false positive in RedundantTypeInfo rule where it would incorrectly trigger on operator `:=`

@@ -22,6 +22,8 @@ module Magic.Analyzer.Rules {
 									if (nextIsType) {
 										if (tokens[i + 1].kind == Frontend.TokenKind.OperatorMultiply) {
 											types.push(tokens[i].value + "*")
+										} else if(tokens[i + 1].kind == Frontend.TokenKind.SeparatorLeftBracket) {
+											types.push(tokens[i].value + "[]")
 										} else {
 											types.push(tokens[i].value);
 										}
